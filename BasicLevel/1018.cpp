@@ -1,68 +1,75 @@
 //
-// Created by jun on 2020/4/14.
+// Created by jun on 2020/4/25.
 //
 
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
-#include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-// define global variable here
+/*
+        乙: B    C   J
+  甲: B     \    甲  乙
+      C     乙   \   甲
+      J     甲   乙   \
+Summary:
+    甲win: (B, C)、(C, J)、(J, B)
+    乙win: (B, J)、(C, B)、(J, C)
+*/
 
+
+int maxWinIndex(const int symbols[]) {
+    int maxTimes = 0;
+    int res = 0;
+    for (int i = 0; i < 3; i++) {
+        if (symbols[i] > maxTimes) {
+            maxTimes = symbols[i];
+            res = i;
+        }
+    }
+    return res;
+}
 
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1018.txt", "r", stdin);
 #endif
-    // write your code here
-    int n;
-    cin >> n;
-    int jiawin = 0, yiwin = 0;
-    /* index: 0->B 1->C 2->J, value: win times */
-    int jia[3] = {0}, yi[3] = {0};
-    for (int i = 0; i < n; i++) {
-        char s, t;
-        cin >> s >> t;
-        if (s == 'B' && t == 'C') {
-            jiawin++;
-            jia[0]++;
-        } else if (s == 'B' && t == 'J') {
-            yiwin++;
-            yi[2]++;
-        } else if (s == 'C' && t == 'B') {
-            yiwin++;
-            yi[0]++;
-        } else if (s == 'C' && t == 'J') {
-            jiawin++;
-            jia[1]++;
-        } else if (s == 'J' && t == 'B') {
-            jiawin++;
-            jia[2]++;
-        } else if (s == 'J' && t == 'C') {
-            yiwin++;
-            yi[1]++;
+    int N;
+    cin >> N;
+    char j, y;
+    int jWin = 0, yWin = 0; /* win times */
+    int jSymbol[3] = {0}, ySymbol[3] = {0}; /* win symbol : B C J */
+    for (int i = 0; i < N; i++) {
+        cin >> j >> y;
+        if (j == 'B' && y == 'C') {
+            jWin++;
+            jSymbol[0]++;
+        } else if (j == 'B' && y == 'J') {
+            yWin++;
+            ySymbol[2]++;
+        } else if (j == 'C' && y == 'J') {
+            jWin++;
+            jSymbol[1]++;
+        } else if (j == 'C' && y == 'B') {
+            yWin++;
+            ySymbol[0]++;
+        } else if (j == 'J' && y == 'B') {
+            jWin++;
+            jSymbol[2]++;
+        } else if (j == 'J' && y == 'C') {
+            yWin++;
+            ySymbol[1]++;
         }
     }
-    cout << jiawin << " " << n - jiawin - yiwin << " " << yiwin << endl
-         << yiwin << " " << n - jiawin - yiwin << " " << jiawin << endl;
-    int maxjia = jia[0] >= jia[1] ? 0 : 1;
-    maxjia = jia[maxjia] >= jia[2] ? maxjia : 2;
-    int maxyi = yi[0] >= yi[1] ? 0 : 1;
-    maxyi = yi[maxyi] >= yi[2] ? maxyi : 2;
-    char str[4] = {"BCJ"};
-    cout << str[maxjia] << " " << str[maxyi];
+    cout << jWin << " " << N - jWin - yWin << " " << yWin << "\n"
+         << yWin << " " << N - jWin - yWin << " " << jWin << "\n";
+    string str = "BCJ";
+    cout << str[maxWinIndex(jSymbol)] << " " << str[maxWinIndex(ySymbol)];
     return 0;
 }
 

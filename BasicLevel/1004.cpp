@@ -1,48 +1,39 @@
 //
-// Created by jun on 2020/4/12.
+// Created by jun on 2020/4/25.
 //
 
 #include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <string.h>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
+#include <cstdio>
+#include <cstdlib>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
-
-// define global variable here
-
 
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1004.txt", "r", stdin);
 #endif
-    // write your code here
-    int n, maxScore = -1, minScore = 101, score;
+    int n, temp, maxScore = -1, minScore = 101;
+    string name, studentId, maxName, maxId, minName, minId;
     cin >> n;
-    string maxName, minName, maxId, minId, name, id;
     for (int i = 0; i < n; i++) {
-        cin >> name >> id >> score;
-        if (maxScore < score) {
-            maxScore = score;
+        cin >> name >> studentId >> temp;
+        if (temp > maxScore) {
+            maxScore = temp;
             maxName = name;
-            maxId = id;
+            maxId = studentId;
         }
-        if (minScore > score) {
-            minScore = score;
+        if (temp < minScore) {
+            minScore = temp;
             minName = name;
-            minId = id;
+            minId = studentId;
         }
     }
-    cout << maxName << " " << maxId << "\n" << minName << " " << minId;
+    cout << maxName << " " << maxId << endl << minName << " " << minId;
+
     return 0;
 }
+

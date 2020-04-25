@@ -1,36 +1,32 @@
+//
+// Created by jun on 2020/4/24.
+//
+
 #include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <string.h>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
+#include <cstdio>
+#include <cstdlib>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
-// define global variable here
-
-
-int main(){
+int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1001.txt", "r", stdin);
 #endif
-
-    // write your code here
     int n, step = 0;
     scanf("%d", &n);
-    while (n != 1){
-        if (n % 2 == 0) n /= 2;
-        else n = (3 * n + 1) / 2;
+    while (n != 1) {
+        if (n % 2 == 0)
+            n /= 2;
+        else
+            n = (3 * n + 1) / 2;
         step++;
     }
-    printf("%d\n", step);
+    printf("%d", step);
     return 0;
 }
+
 

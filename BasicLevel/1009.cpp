@@ -1,40 +1,39 @@
 //
-// Created by jun on 2020/4/13.
+// Created by jun on 2020/4/25.
 //
+
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
-#include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <stack>
+#include <algorithm>
 
 using namespace std;
 
-// define global variable here
-
+/*
+    input word -> stack
+*/
 
 int main() {
 #ifdef ONLINE_JUDGE
 #else
-    freopen("input/1010.txt", "r", stdin);
+    freopen("input/1009.txt", "r", stdin);
 #endif
-    // write your code here
-    stack<string> v;
-    string s;
-    while (cin >> s) v.push(s);
-    cout << v.top();
-    v.pop();
-    while (!v.empty()){
-        cout << " " << v.top();
-        v.pop();
+    stack<string> words;
+    int notFirstPrint = 0;
+    string temp;
+    while (cin >> temp)
+        words.push(temp);
+    while (!words.empty()) {
+        if (notFirstPrint) cout << " ";
+        cout << words.top();
+        words.pop();
+        notFirstPrint = 1;
     }
+
+
     return 0;
 }
 

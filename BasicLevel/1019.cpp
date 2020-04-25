@@ -1,24 +1,22 @@
 //
-// Created by jun on 2020/4/14.
+// Created by jun on 2020/4/26.
 //
 
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
-#include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-// define global variable here
+/*
+    1、string 使用 sort 可实现排序, 自定义cmp 逆序;
+    2、stoi: string -> int
+    3、to_string: int -> string
+*/
+
 bool cmp(char a, char b) { return a > b; }
 
 int main() {
@@ -26,18 +24,18 @@ int main() {
 #else
     freopen("input/1019.txt", "r", stdin);
 #endif
-    // write your code here
-    string s;
+    string s, ascent, descent;
     cin >> s;
     s.insert(0, 4 - s.length(), '0');
     do {
-        string a = s, b = s;
-        sort(a.begin(), a.end(), cmp);
-        sort(b.begin(), b.end());
-        int result = stoi(a) - stoi(b);
+        ascent = s;
+        descent = s;
+        sort(ascent.begin(), ascent.end(), cmp);
+        sort(descent.begin(), descent.end());
+        int result = stoi(ascent) - stoi(descent);
         s = to_string(result);
         s.insert(0, 4 - s.length(), '0');
-        cout << a << " - " << b << " = " << s << endl;
+        cout << ascent << " - " << descent << " = " << s << endl;
     } while (s != "6174" && s != "0000");
     return 0;
 }
