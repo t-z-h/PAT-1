@@ -1,29 +1,24 @@
 //
-// Created by jun on 2020/4/14.
+// Created by jun on 2020/4/26.
 //
-
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
-#include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
+/*
+    1、自定义结构体保存月饼数据: mount(库存), prince(售价), unit(单价)；
+    2、自定义按单价排序；
+*/
 
-// define global variable here
-struct mooncake {
+struct moonCake {
     float mount, price, unit;
 };
 
-int cmp(mooncake a, mooncake b) {
+bool cmp(moonCake a, moonCake b) {
     return a.unit > b.unit;
 }
 
@@ -32,24 +27,26 @@ int main() {
 #else
     freopen("input/1020.txt", "r", stdin);
 #endif
-    // write your code here
-    int n, need;
-    cin >> n >> need;
-    vector<mooncake> a(n);
-    for (int i = 0; i < n; i++) scanf("%f", &a[i].mount);
-    for (int i = 0; i < n; i++) scanf("%f", &a[i].price);
-    for (int i = 0; i < n; i++) a[i].unit = a[i].price / a[i].mount;
-    sort(a.begin(), a.end(), cmp);
-    float result = 0.0;
-    for (int i = 0; i < n; i++) {
-        if (a[i].mount <= need) {
-            result = result + a[i].price;
+    int N, D;
+    cin >> N >> D;
+    vector<moonCake> v(N);
+    for (int i = 0; i < N; i++) scanf("%f", &v[i].mount);
+    for (int i = 0; i < N; i++) {
+        scanf("%f", &v[i].price);
+        v[i].unit = v[i].price / v[i].mount;
+    }
+    sort(v.begin(), v.end(), cmp);
+    float result = 0;
+    for (int i = 0; i < N; i++) {
+        if (v[i].mount <= D) {
+            result += v[i].price;
         } else {
-            result = result + a[i].unit * need;
+            result += v[i].unit * D;
             break;
         }
-        need = need - a[i].mount;
+        D -= v[i].mount;
     }
     printf("%.2f", result);
     return 0;
 }
+

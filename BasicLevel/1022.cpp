@@ -1,47 +1,40 @@
 //
-// Created by jun on 2020/4/15.
+// Created by jun on 2020/4/26.
 //
 
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
-#include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
-
-// define global variable here
-
+/*
+    计算A+B=res后，res % D -> s[100]，用i统计有效位
+    i - 1 -> j, 逐位输出
+*/
 
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1022.txt", "r", stdin);
 #endif
-    // write your code here
-    int a, b, d;
-    cin >> a >> b >> d;
-    int t = a + b;
-    if (t == 0) {
-        cout << 0;
+    int A, B, D;
+    scanf("%d%d%d", &A, &B, &D);
+    int res = A + B;
+    if (!res) {
+        printf("0");
         return 0;
     }
-    int s[100];
-    int i = 0;
-    while (t != 0) {
-        s[i++] = t % d;
-        t /= d;
+    int i = 0, s[100];
+    while (res) {
+        s[i++] = res % D;
+        res /= D;
     }
     for (int j = i - 1; j >= 0; j--)
-        cout << s[j];
+        printf("%d", s[j]);
+
     return 0;
 }
 
