@@ -1,30 +1,26 @@
 //
-// Created by jun on 2020/4/18.
+// Created by jun on 2020/5/8.
 //
+
 
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
 #include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
+#include <vector>
+#include <algorithm>
 #include <set>
 
 using namespace std;
-
-// define global variable here
-int ran[10000];
+/*
+    1、排名保存到数组里, ID做index，排名做value；
+    2、检索ID，保存到set里。
+*/
 
 bool isPrime(int a) {
     if (a <= 1) return false;
-    int Sqrt = sqrt((double) a);
-    for (int i = 2; i <= Sqrt; i++) {
+    for (int i = 2; i * i <= a; i++) {
         if (a % i == 0)
             return false;
     }
@@ -36,8 +32,8 @@ int main() {
 #else
     freopen("input/1059.txt", "r", stdin);
 #endif
-    // write your code here
     int n, k;
+    int ran[10000];
     scanf("%d", &n);
     for (int i = 0; i < n; i++) {
         int id;

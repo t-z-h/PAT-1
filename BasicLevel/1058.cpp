@@ -1,32 +1,23 @@
 //
-// Created by jun on 2020/4/18.
+// Created by jun on 2020/5/6.
 //
 
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
 #include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
+#include <vector>
+#include <algorithm>
 #include <set>
 
 using namespace std;
-
-// define global variable here
-
 
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1058.txt", "r", stdin);
 #endif
-    // write your code here
     int n, m, temp, k;
     scanf("%d%d", &n, &m);
     vector<set<char>> right(m);

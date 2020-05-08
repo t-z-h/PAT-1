@@ -1,31 +1,27 @@
 //
-// Created by jun on 2020/4/15.
+// Created by jun on 2020/5/2.
 //
 
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
-#include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
-// define global variable here
+/*
+    1. 注意 p <= 10e9;
+    2. 用vector v保存读入的数列，排序;
+    3. 遍历判断v[i]是否满足要求;
+*/
 
-
-int main(){
+int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1030.txt", "r", stdin);
 #endif
-    // write your code here
     int n;
     long long p;
     scanf("%d%lld", &n, &p);
@@ -33,15 +29,12 @@ int main(){
     for (int i = 0; i < n; i++)
         cin >> v[i];
     sort(v.begin(), v.end());
-    int result = 0, temp = 0;
-    for (int i = 0; i < n; i++){
-        for (int j = i + result; j < n; j++){
-            if (v[j] <= v[i] * p) {
-                temp = j - i + 1;
-                result = max(result, temp);
-            } else {
+    int result = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = i + result; j < n; j++) {
+            if (v[j] > v[i] * p)
                 break;
-            }
+            result = max(result, j - i + 1);
         }
     }
     cout << result;

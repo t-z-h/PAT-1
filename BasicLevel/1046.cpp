@@ -1,43 +1,32 @@
 //
-// Created by jun on 2020/4/18.
+// Created by jun on 2020/5/5.
 //
 
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
-#include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
-
-// define global variable here
-
 
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1046.txt", "r", stdin);
 #endif
-    // write your code here
-    int n, jia = 0, yi = 0, jiahan, jiahua, yihan, yihua, sum;
-    cin >> n;
-    for (int i = 0; i < n; i++) {
-        cin >> jiahan >> jiahua >> yihan >> yihua;
-        sum = jiahan + yihan;
-        if (sum == jiahua && sum != yihua)
-            yi++;
-        if (sum != jiahua && sum == yihua)
-            jia++;
+    int N, jiaHan, jiaHua, yiHan, yiHua, jiaHe = 0, yiHe = 0, sum = 0;
+    cin >> N;
+    for (int i = 0; i < N; i++) {
+        cin >> jiaHan >> jiaHua >> yiHan >> yiHua;
+        sum = jiaHan + yiHan;
+        if (sum == jiaHua && sum != yiHua)
+            yiHe++;
+        if (sum != jiaHua && sum == yiHua)
+            jiaHe++;
     }
-    cout << jia << " " << yi;
+    cout << jiaHe << " " << yiHe;
     return 0;
 }
 

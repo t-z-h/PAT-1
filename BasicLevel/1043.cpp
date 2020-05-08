@@ -1,32 +1,25 @@
 //
-// Created by jun on 2020/4/17.
+// Created by jun on 2020/5/5.
 //
 
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
-#include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-// define global variable here
-
+/*
+    PATest -> 统计6种字符个数，按照个数输出
+*/
 
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1043.txt", "r", stdin);
 #endif
-    // write your code here
     int map[128] = {0}, c;
     while ((c = cin.get()) != EOF) map[c]++;
     while (0 < map['P'] || 0 < map['A'] || map['T'] > 0 || map['e'] > 0 || map['s'] > 0 || map['t'] > 0) {
@@ -40,4 +33,3 @@ int main() {
 
     return 0;
 }
-

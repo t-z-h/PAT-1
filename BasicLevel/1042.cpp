@@ -1,47 +1,40 @@
 //
-// Created by jun on 2020/4/17.
+// Created by jun on 2020/5/5.
 //
 
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
-#include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-// define global variable here
-
+/*
+    只统计字母, 且只考虑小写 -> int letters[26]
+*/
 
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1042.txt", "r", stdin);
 #endif
-    // write your code here
     string s;
     getline(cin, s);
-    int a[26] = {0};
-    for (int i = 0; i < s.length(); i++)
-        s[i] = tolower(s[i]);
-    for (int i = 0; i < s.length(); i++)
-        if (islower(s[i])) a[s[i] - 'a']++;
-    int max = a[0], t = 0;
-    for (int i = 1; i < 26; i++) {
-        if (a[i] > max) {
-            max = a[i];
-            t = i;
-        }
+    int letters[26] = {0};
+    for (char &c : s) {
+        c = tolower(c);
+        if (islower(c)) letters[c - 'a']++;
     }
-    printf("%c %d", t + 'a', max);
+    int maxCount = letters[0];
+    char maxLetter = 'a';
+    for (int i = 1; i < 26; i++)
+        if (letters[i] > maxCount) {
+            maxCount = letters[i];
+            maxLetter = 'a' + i;
+        }
+    printf("%c %d", maxLetter, maxCount);
     return 0;
 }
 

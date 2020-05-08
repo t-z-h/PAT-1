@@ -1,36 +1,27 @@
 //
-// Created by jun on 2020/4/15.
+// Created by jun on 2020/5/1.
 //
+
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
-#include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-// define global variable here
 /*
- * 分析: 关键求有多少层
- *      设有i层，上半部分(不含1个*的层)共有: 3 + 5 + ... + (2i+1) = (3 + 2i + 1) * i / 2 = i * (i + 2) 个元素
- *   整个沙漏有 2 * i * (i + 2) + 1个元素
- */
-
+    分析: 关键求有多少层
+        设有i层，上半部分(不含1个*)共有: 3 + 5 + ... + (2i+1) = (3 + 2i+1)*i/2=i*(i+2)个元素
+    整个沙漏有2*i*(i+2)+1个元素
+*/
 
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1027.txt", "r", stdin);
 #endif
-    // write your code here
     int N, row = 0;
     char c;
     cin >> N >> c;

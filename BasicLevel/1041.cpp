@@ -1,31 +1,25 @@
 //
-// Created by jun on 2020/4/17.
+// Created by jun on 2020/5/5.
 //
+
+
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
-#include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-// define global variable here
-
-
+/*
+    使用一个二维数组保存 准考证号, 座位号； 试机号为index
+*/
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1041.txt", "r", stdin);
 #endif
-    // write your code here
     string stu[1005][2], s1, s2;
     int n, m, t;
     cin >> n;
@@ -39,7 +33,7 @@ int main() {
         cin >> t;
         cout << stu[t][0] << " " << stu[t][1] << endl;
     }
+
     return 0;
 }
-
 

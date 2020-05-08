@@ -1,45 +1,38 @@
 //
-// Created by jun on 2020/4/18.
+// Created by jun on 2020/5/5.
 //
 
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
-#include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
-
-// define global variable here
-
+/*
+    只需要保存最大成绩下标即可
+*/
 
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1047.txt", "r", stdin);
 #endif
-    // write your code here
-    int n, t, num, score;
+    int n, teamId, pId, score;
     cin >> n;
-    int team[1001] = {0};
-    for (int i = 1; i <= n; i++) {
-        scanf("%d-%d %d", &t, &num, &score);
-        team[t] += score;
+    int scores[1001] = {0}, maxTeamId = 1;
+    for (int i = 0; i < n; i++) {
+        scanf("%d-%d %d", &teamId, &pId, &score);
+        scores[teamId] += score;
     }
-    int max = 0;
-    for (int i = 0; i < 1001; i++) {
-        if (team[max] < team[i])
-            max = i;
+
+    for (int i = 1; i < 1001; i++) {
+        if (scores[i] > scores[maxTeamId]) {
+            maxTeamId = i;
+        }
     }
-    cout << max << " " << team[max];
+    printf("%d %d", maxTeamId, scores[maxTeamId]);
     return 0;
 }
 

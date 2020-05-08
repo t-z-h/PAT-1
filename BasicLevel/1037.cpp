@@ -1,32 +1,24 @@
 //
-// Created by jun on 2020/4/16.
+// Created by jun on 2020/5/5.
 //
 
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
-#include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
-
-// define global variable here
-
-
+/*
+    1、通过交换，确保大值在后，发生交换需输出负号；
+    2、对于借位的处理，t < c ? t - c + 29 : t - c;
+*/
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1037.txt", "r", stdin);
 #endif
-    // write your code here
     int a, b, c, m, n, t, x, y, z;
     scanf("%d.%d.%d %d.%d.%d", &a, &b, &c, &m, &n, &t);
     if (a > m || (a == m && b > n) || (a == m && b == n && c > t)) {
