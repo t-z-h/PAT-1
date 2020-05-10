@@ -1,51 +1,47 @@
 //
-// Created by jun on 2020/4/18.
+// Created by jun on 2020/5/10.
 //
-
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
 #include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
-
-// define global variable here
-
+/*
+    注意3个点：
+    1、如果已经是”#”了就不要继续下面的判断了，不然可能输出Wrong password: “#”
+    2、如果密码错误并且达到了尝试的次数，是先输出Wrong password那句紧接着输出Account locked那句
+    3、Wrong password: 后面有个空格～
+*/
 
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1067.txt", "r", stdin);
 #endif
-    // write your code here
-    string password, temp;
+    string correctPW, temp;
     int n, cnt = 0;
-    cin >> password >> n;
+    cin >> correctPW >> n;
     getchar();
-    while (1) {
+    while (true) {
         getline(cin, temp);
         if (temp == "#") break;
         cnt++;
-        if (cnt <= n && temp == password) {
-            cout << "Welcome in";
+        if (temp == correctPW) {
+            printf("Welcome in");
             break;
-        } else if (cnt <= n && temp != password) {
-            cout << "Wrong password: " << temp << endl;
+        } else {
+            printf("Wrong password: %s\n", temp.c_str());
             if (cnt == n) {
-                cout << "Account locked";
+                printf("Account locked");
                 break;
             }
         }
     }
     return 0;
 }
+
 
