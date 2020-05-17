@@ -1,24 +1,16 @@
 //
-// Created by jun on 2020/4/20.
+// Created by jun on 2020/5/17.
 //
 
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
 #include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
-
-// define global variable here
 struct node {
     int data, next;
 } list[100000];
@@ -30,7 +22,6 @@ int main() {
 #else
     freopen("input/1075.txt", "r", stdin);
 #endif
-    // write your code here
     int start, n, k, a;
     scanf("%d%d%d", &start, &n, &k);
     for (int i = 0; i < n; i++) {

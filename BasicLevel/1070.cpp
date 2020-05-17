@@ -1,38 +1,27 @@
 //
-// Created by jun on 2020/4/18.
+// Created by jun on 2020/5/11.
 //
 
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
 #include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-
 /*
- * 分析: 因为所有长度都要串在一起，每次都等于(旧的绳子长度+新的绳子长度)/2,所以越是早加入绳子长度中的段，
- * 越要对折的次数多，所以既然希望绳子长度是最长的，就必须让长的段对折次数尽可能的短。所以将所有段从小到大排序，
- * 然后从头到尾分别将每一段一次加入结绳的绳子中。
- */
-// define global variable here
-
-
+    分析: 因为所有长度都要串在一起，每次都等于(旧的绳子长度+新的绳子长度)/2, 所以越是早加入绳子长度中的段，越要对折的次数多，
+    所以既然希望绳子长度是最长的，就必须让长的段对折次数尽可能的短。所以将所有段从小到大排序，然后从头到尾分别将每一段一次加入
+    结绳的绳子中。
+*/
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1070.txt", "r", stdin);
 #endif
-    // write your code here
     int n;
     scanf("%d", &n);
     vector<int> v(n);
