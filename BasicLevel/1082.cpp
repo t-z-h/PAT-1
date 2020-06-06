@@ -1,44 +1,37 @@
 //
-// Created by jun on 2020/4/20.
+// Created by jun on 2020/5/19.
 //
-
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
 #include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
-
-// define global variable here
-
-
 
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1082.txt", "r", stdin);
 #endif
-    // write your code here
-    int n, id, x, y, maxid, maxdis = -1, minid, mindis = 99999;
-    cin >> n;
+    int n, x, y, maxDistance = -1, minDistance = 99999;
+    scanf("%d", &n);
+    string name, maxName, minName;
     for (int i = 0; i < n; i++) {
-        cin >> id >> x >> y;
+        cin >> name >> x >> y;
         int dis = x * x + y * y;
-        if (dis > maxdis) maxid = id;
-        if (dis < mindis) minid = id;
-        maxdis = max(maxdis, dis);
-        mindis = min(mindis, dis);
+        if (dis > maxDistance) {
+            maxName = name;
+            maxDistance = dis;
+        }
+        if (dis < minDistance) {
+            minName = name;
+            minDistance = dis;
+        }
     }
-    printf("%04d %04d", minid, maxid);
+    cout << minName << " " << maxName;
     return 0;
 }
 

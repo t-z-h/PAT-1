@@ -1,44 +1,38 @@
 //
-// Created by jun on 2020/4/20.
+// Created by jun on 2020/5/22.
 //
-
-
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
 #include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
-
-// define global variable here
-
+/*
+    1. input value -> res n
+    2. 已经给出了初始值，循环计算next即可
+    3. 计算next的方法: 标记起始下标start，终止下标end，end-start即为len
+*/
 
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1084.txt", "r", stdin);
 #endif
-    // write your code here
-    string s;
-    int n, j;
-    cin >> s >> n;
+    string res;  // final result
+    int n, end;
+    cin >> res >> n;
     for (int cnt = 1; cnt < n; cnt++) {
-        string t;
-        for (int i = 0; i < s.length(); i = j) {
-            for (j = i; j < s.length() && s[j] == s[i]; j++);
-            t += s[i] + to_string(j - i);
+        string next;  // next value
+        for (int start = 0; start < res.length(); start = end) {  // start: start index of not repeated num
+            for (end = start; end < res.length() && res[end] == res[start]; end++);
+            next += res[start] + to_string(end - start);
         }
-        s = t;
+        res = next;
     }
-    cout << s;
+    cout << res;
     return 0;
 }
+

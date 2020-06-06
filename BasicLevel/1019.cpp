@@ -24,19 +24,19 @@ int main() {
 #else
     freopen("input/1019.txt", "r", stdin);
 #endif
-    string s, ascent, descent;
-    cin >> s;
-    s.insert(0, 4 - s.length(), '0');
+    string source /* 源字符串 */, ascent /* 升序 */, descent /* 降序 */;
+    cin >> source;
+    source.insert(0, 4 - source.length(), '0');
     do {
-        ascent = s;
-        descent = s;
+        ascent = source;
+        descent = source;
         sort(ascent.begin(), ascent.end(), cmp);
         sort(descent.begin(), descent.end());
         int result = stoi(ascent) - stoi(descent);
-        s = to_string(result);
-        s.insert(0, 4 - s.length(), '0');
-        cout << ascent << " - " << descent << " = " << s << endl;
-    } while (s != "6174" && s != "0000");
+        source = to_string(result);
+        source.insert(0, 4 - source.length(), '0');
+        cout << ascent << " - " << descent << " = " << source << endl;
+    } while (source != "6174" && source != "0000");
     return 0;
 }
 

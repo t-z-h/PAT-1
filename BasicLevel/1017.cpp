@@ -22,7 +22,7 @@ int main() {
     freopen("input/1017.txt", "r", stdin);
 #endif
     string A;
-    int B, remainder = 0, quotient = 0;
+    int B, remainder /* 余数 */ = 0, quotient /* 商 */ = 0;
     cin >> A >> B;
     int len = A.length();
     quotient = (A[0] - '0') / B;

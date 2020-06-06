@@ -1,24 +1,17 @@
 //
-// Created by jun on 2020/4/20.
+// Created by jun on 2020/5/18.
 //
 
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
 #include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-// define global variable here
 string rev(string s) {
     reverse(s.begin(), s.end());
     return s;
@@ -31,7 +24,7 @@ string add(string s1, string s2) {
         s[i] = (s1[i] - '0' + s2[i] - '0' + carry) % 10 + '0';
         carry = (s1[i] - '0' + s2[i] - '0' + carry) / 10;
     }
-    if (carry > 0) s = "1" + s;
+    if (carry) s = "1" + s;
     return s;
 }
 
@@ -40,7 +33,6 @@ int main() {
 #else
     freopen("input/1079.txt", "r", stdin);
 #endif
-    // write your code here
     string s, sum;
     int n = 10;
     cin >> s;

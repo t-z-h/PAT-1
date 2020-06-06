@@ -17,7 +17,7 @@ int main() {
 #else
     freopen("input/1021.txt", "r", stdin);
 #endif
-    int res[10] = {0}, notFirstPrint;
+    int res[10] = {0};
     string s;
     cin >> s;
     for (char c: s)

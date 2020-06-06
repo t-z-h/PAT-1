@@ -1,36 +1,29 @@
 //
-// Created by jun on 2020/4/20.
+// Created by jun on 2020/6/6.
 //
-
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
 #include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
+#include <unordered_map>
 
 using namespace std;
 
-// define global variable here
-struct node {
-    string school;
-    int tws, ns;
+struct school {
+    string name;
+    int totalWightScore, studentNum;
 };
 
-bool cmp(node a, node b) {
-    if (a.tws != b.tws)
-        return a.tws > b.tws;
-    else if (a.ns != b.ns)
-        return a.ns < b.ns;
+bool cmp(school a, school b) {
+    if (a.totalWightScore != b.totalWightScore)
+        return a.totalWightScore > b.totalWightScore;
+    else if (a.studentNum != b.studentNum)
+        return a.studentNum < b.studentNum;
     else
-        return a.school < b.school;
+        return a.name < b.name;
 }
 
 int main() {
@@ -38,38 +31,41 @@ int main() {
 #else
     freopen("input/1085.txt", "r", stdin);
 #endif
-    // write your code here
     int n;
     scanf("%d", &n);
-    unordered_map<string, int> cnt;
-    unordered_map<string, double> sum;
+    unordered_map<string, int> schoolCountMap;
+    unordered_map<string, double> schoolScoreSumMap;
     for (int i = 0; i < n; i++) {
-        string id, school;
+        string id, schoolName;
         cin >> id;
         double score;
         scanf("%lf", &score);
-        cin >> school;
-        for (int j = 0; j < school.length(); j++)
-            school[j] = tolower(school[j]);
+        cin >> schoolName;
+        for (char &j : schoolName)
+            j = (char) tolower(j);
         if (id[0] == 'B')
             score /= 1.5;
         else if (id[0] == 'T')
             score *= 1.5;
-        sum[school] += score;
-        cnt[school]++;
+        schoolScoreSumMap[schoolName] += score;
+        schoolCountMap[schoolName]++;
     }
-    vector<node> ans;
-    for (auto it = cnt.begin(); it != cnt.end(); it++)
-        ans.push_back(node{it->first, (int) sum[it->first], cnt[it->first]});
+    vector<school> ans;
+    for (auto it = schoolCountMap.begin(); it != schoolCountMap.end(); it++)
+        ans.push_back(school{
+                it->first,  // name
+                (int) schoolScoreSumMap[it->first],  // totalWightScore
+                schoolCountMap[it->first] // studentNum
+        });
     sort(ans.begin(), ans.end(), cmp);
-    int rank = 0, pres = -1;
-    printf("%d\n", (int) ans.size());
+    int rank = 0, pre = -1;
+    printf("%lu\n", ans.size());
     for (int i = 0; i < ans.size(); i++) {
-        if (pres != ans[i].tws) rank = i + 1;
-        pres = ans[i].tws;
+        if (pre != ans[i].totalWightScore) rank = i + 1;
+        pre = ans[i].totalWightScore;
         printf("%d ", rank);
-        cout << ans[i].school;
-        printf(" %d %d\n", ans[i].tws, ans[i].ns);
+        cout << ans[i].name;
+        printf(" %d %d\n", ans[i].totalWightScore, ans[i].studentNum);
     }
     return 0;
 }

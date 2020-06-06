@@ -1,23 +1,17 @@
 //
-// Created by jun on 2020/4/20.
+// Created by jun on 2020/5/18.
 //
+
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
 #include <cstring>
+#include <string>
+#include <vector>
 #include <algorithm>
 #include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <string>
-#include <set>
 
 using namespace std;
-
-// define global variable here
 struct node {
     string name;
     int gp, gm, gf, g;
@@ -34,7 +28,6 @@ int main() {
 #else
     freopen("input/1080.txt", "r", stdin);
 #endif
-    // write your code here
     int p, m, n, score, cnt = 1;
     cin >> p >> m >> n;
     vector<node> v, ans;
@@ -65,6 +58,4 @@ int main() {
         printf("%s %d %d %d %d\n", ans[i].name.c_str(), ans[i].gp, ans[i].gm, ans[i].gf, ans[i].g);
     return 0;
 }
-
-
 
