@@ -1,45 +1,35 @@
 //
 // Created by jun on 2020/4/21.
 //
-
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
 #include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
-
-// define global variable here
-int a[1005][105], sum[1005];
 
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1092.txt", "r", stdin);
 #endif
-    // write your code here
-    int m, n, maxn = 0, total = 0;
+    int colSum[1005] = {0};   // 保存列和
+    int m, n, maxNum = 0, inputNum;
     vector<int> ans;
     cin >> m >> n;
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= m; j++) {
-            cin >> a[i][j];
-            sum[j] += a[i][j];
-            maxn = max(maxn, sum[j]);
+            cin >> inputNum;
+            colSum[j] += inputNum;
+            maxNum = max(maxNum, colSum[j]);
         }
     }
-    cout << maxn << endl;
+    cout << maxNum << endl;
     for (int i = 1; i <= m; i++)
-        if (sum[i] == maxn) ans.push_back(i);
+        if (colSum[i] == maxNum) ans.push_back(i);
     for (int i = 0; i < ans.size(); i++) {
         if (i != 0) cout << " ";
         cout << ans[i];

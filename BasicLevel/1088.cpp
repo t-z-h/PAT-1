@@ -1,49 +1,47 @@
 //
 // Created by jun on 2020/4/20.
 //
-
-
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <cmath>
 #include <cstring>
-#include <algorithm>
-#include <map>
-#include <unordered_map>
-#include <vector>
-#include <queue>
-#include <stack>
 #include <string>
-#include <set>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
+/*
+    m: mine 自己的能力值
+    jia: 甲的能力值，2位数
+    yi: reverse(jia)
+    bing:
+          |jia - yi| = x * bing ==> bing = |jia - yi| / x
+          yi = y * bing
+*/
 
-// define global variable here
-int m, x, y;
-
-void print(double t) {
-    if (m == t) printf(" Ping");
-    else if (m < t) printf(" Cong");
+void print(int mine, double other) {
+    if (mine == other) printf(" Ping");
+    else if (mine < other) printf(" Cong");
     else printf(" Gai");
 }
-
 
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1088.txt", "r", stdin);
 #endif
-    // write your code here
-    scanf("%d %d %d", &m, &x, &y);
-    for (int i = 99; i >= 10; i--) {
-        int j = i % 10 * 10 + i / 10;
-        double k = abs(j - i) * 1.0 / x;
-        if (j == k * y) {
-            cout << i;
-            print(i);
-            print(j);
-            print(k);
+    int m, x, y;
+    scanf("%d%d%d", &m, &x, &y);
+    int jia, yi;
+    double bing;
+    for (jia = 99; jia >= 10; jia--) {
+        yi = jia % 10 * 10 + jia / 10;
+        bing = abs(jia - yi) * 1.0 / x;
+        if (yi == y * bing) {
+            cout << jia;
+            print(m, jia);
+            print(m, yi);
+            print(m, bing);
             return 0;
         }
     }

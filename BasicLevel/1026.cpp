@@ -16,9 +16,9 @@ int main() {
 #else
     freopen("input/1026.txt", "r", stdin);
 #endif
-    int a, b;
-    cin >> a >> b;
-    int n = ((b - a) + 50) / 100;
+    int c1, c2;
+    cin >> c1 >> c2;
+    int n = ((c2 - c1) + 50) / 100;
     int hour = n / 3600;
     n %= 3600;
     int minute = n / 60, second = n % 60;
