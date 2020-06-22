@@ -23,7 +23,7 @@ int main() {
     freopen("input/1033.txt", "r", stdin);
 #endif
     string bad, should;
-    getline(cin, bad);  /* 可能出现`\n` */
+    getline(cin, bad);  /* 可能出现`空格`或Tab */
     getline(cin, should);
     for (char c: should) {
         if (bad.find(toupper(c)) != string::npos) continue;
