@@ -61,30 +61,10 @@ int main() {
 #endif
     long long a, b, c, d;
     scanf("%lld/%lld %lld/%lld", &a, &b, &c, &d);
-    func(a, b);
-    printf(" + ");
-    func(c, d);
-    printf(" = ");
-    func(a * d + b * c, b * d);
-    printf("\n");
-    func(a, b);
-    printf(" - ");
-    func(c, d);
-    printf(" = ");
-    func(a * d - b * c, b * d);
-    printf("\n");
-    func(a, b);
-    printf(" * ");
-    func(c, d);
-    printf(" = ");
-    func(a * c, b * d);
-    printf("\n");
-    func(a, b);
-    printf(" / ");
-    func(c, d);
-    printf(" = ");
-    func(a * d, b * c);
-    printf("\n");
+    func(a, b); printf(" + "); func(c, d); printf(" = "); func(a * d + b * c, b * d); printf("\n");
+    func(a, b); printf(" - "); func(c, d); printf(" = "); func(a * d - b * c, b * d); printf("\n");
+    func(a, b); printf(" * "); func(c, d); printf(" = "); func(a * c, b * d); printf("\n");
+    func(a, b); printf(" / "); func(c, d); printf(" = "); func(a * d, b * c); printf("\n");
     return 0;
 }
 
