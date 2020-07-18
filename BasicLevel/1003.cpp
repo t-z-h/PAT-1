@@ -3,11 +3,7 @@
 //
 
 #include <iostream>
-#include <cstdio>
-#include <cstdlib>
 #include <string>
-#include <vector>
-#include <algorithm>
 #include <map>
 
 using namespace std;
@@ -46,7 +42,7 @@ int main() {
             if (s[j] == 'P') pLastIndex = j;
             else if (s[j] == 'T') tLastIndex = j;
         }
-        if (m['p'] == 1 &&
+        if (m['P'] == 1 &&
             m['A'] != 0 &&
             m['T'] == 1 &&
             m.size() == 3 &&

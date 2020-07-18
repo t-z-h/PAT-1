@@ -1,38 +1,36 @@
 //
-// Created by jun on 2020/4/25.
+// Created by jun on 2020/7/18.
 //
+
 #include <iostream>
-#include <cstdio>
-#include <cstdlib>
-#include <string>
 #include <vector>
 #include <algorithm>
 
 using namespace std;
-/*
-    reverse(reverse(n)) = n
-    doing nothing
-*/
 
+/*
+   1. input -> n, m, nums;
+   2. reverse: begin ~ end; begin ~ begin+m; begin + m ~ end;
+
+    坑: m > n
+ */
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1008.txt", "r", stdin);
 #endif
-    int N, M;
-    cin >> N >> M;
-    M = M % N;
-    vector<int> nums(N);
-    for (int i = 0; i < N; i++)
+    int n, m;
+    cin >> n >> m;
+    m = m % n;
+    vector<int> nums(n);
+    for (int i = 0; i < n; i++)
         cin >> nums[i];
     reverse(nums.begin(), nums.end());
-    reverse(nums.begin(), nums.begin() + M);
-    reverse(nums.begin() + M, nums.end());
-    for (int i = 0; i < nums.size(); i++) {
-        if (i != 0) cout << " ";
+    reverse(nums.begin(), nums.begin() + m);
+    reverse(nums.begin() + m, nums.end());
+    for (int i = 0; i < n; i++) {
+        if (i) cout << " ";
         cout << nums[i];
     }
-
     return 0;
 }
-

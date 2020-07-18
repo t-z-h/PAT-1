@@ -1,20 +1,15 @@
 //
-// Created by jun on 2020/4/25.
+// Created by jun on 2020/7/18.
 //
 
 #include <iostream>
-#include <cstdio>
-#include <cstdlib>
-#include <string>
-#include <vector>
-#include <algorithm>
 
 using namespace std;
 
 /*
-    1、素数判断-> bool isPrime(int n)；
-    2、isPrime(i) && isPrime(i - 2) -> cnt++;
-*/
+   1. isPrime -> 判断素数
+   2. 遍历5~N, isPrime(i) && isPrime(i-2) -> 计数器+1;
+ */
 
 bool isPrime(int n) {
     for (int i = 2; i * i <= n; i++)
@@ -29,9 +24,9 @@ int main() {
 #endif
     int N, cnt = 0;
     cin >> N;
-    for (int i = 5; i <= N; i++)
+    for (int i = 5; i <= N; i++) {
         if (isPrime(i) && isPrime(i - 2)) cnt++;
+    }
     cout << cnt;
     return 0;
 }
-
